@@ -1,0 +1,36 @@
+{
+    "private": true,
+    "main": "index.html",
+    "scripts": {
+        "dev": "vite",
+        "build": "vite build"
+    },
+    "devDependencies": {
+        "@popperjs/core": "^2.11.6",
+        "@vitejs/plugin-vue": "^4.0.0",
+        "axios": "^1.1.2",
+        "bootstrap": "^5.2.3",
+        "laravel-vite-plugin": "^0.7.2",
+        "lodash": "^4.17.19",
+        "postcss": "^8.1.14",
+        "sass": "^1.56.1",
+        "vite": "^4.0.0",
+        "vue": "^3.2.37",
+        "browser-sync": "^2.11.2",
+        "del": "^2.2.0",
+        "gulp": "^3.9.1",
+        "gulp-autoprefixer": "^3.1.0",
+        "gulp-cache": "^0.4.3",
+        "gulp-concat": "^2.6.0",
+        "gulp-concat-css": "^2.2.0",
+        "gulp-cssnano": "^2.1.1",
+        "gulp-image": "^1.3.1",
+        "gulp-imagemin": "^2.4.0",
+        "gulp-rename": "^1.2.2",
+        "gulp-sass": "^2.2.0",
+        "gulp-uglifyjs": "^0.6.2",
+        "imagemin-pngquant": "^4.2.2",
+        "gulp-size": "^2.0.0",
+        "gulp-jade": "^1.0.0"
+    }
+}

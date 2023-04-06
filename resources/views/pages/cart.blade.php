@@ -35,13 +35,6 @@ use App\Models\Games;
         </div>
         <div class="header-container">
             <div class="payment-container">
-                <div class="payment-basket__status">
-                    <div class="payment-basket__status__icon-block"><a class="payment-basket__status__icon-block__link"><i
-                                class="fa fa-shopping-basket"></i></a></div>
-                    <div class="payment-basket__status__basket"><span
-                            class="payment-basket__status__basket-value">0</span><span
-                            class="payment-basket__status__basket-value-descr">товаров</span></div>
-                </div>
             </div>
             @if(Auth::check())
                 Вы вошли как {{Auth::user()->name}}. Добро пожаловать!
@@ -72,6 +65,20 @@ use App\Models\Games;
                                     href="{{route('categories', ['id'=>$category->id, 'name'=>$category->name])}}"
                                     class="sidebar-category__item__link">{{$category["name"]}}</a>
                             </li>
+                            @if(Auth::check())
+                                @if(Auth::user()->is_Admin)
+
+                                    <a href="{{route('category.editPage', ['id' => $category->id])}}">Редактировать</a>
+
+                                    <form action="{{route('category.delete', ['id' => $category->id])}}"
+                                          method="post">
+                                        {{ csrf_field() }}
+                                        <input type="submit" value="удалить">
+                                    </form>
+
+                                    <a href="{{route('category.addPage')}}">Добавить</a>
+                                @endif
+                            @endif
                         @endforeach
                     </ul>
                 </div>
@@ -160,6 +167,30 @@ use App\Models\Games;
                     @endif
                 @endif
             @endforeach
+            <br>
+            <br>
+            @if(Auth::check())
+                @if(Auth::user()->is_Admin)
+                    Заказы:<br>
+                    @foreach($orders as $order)
+                        <tr>
+                            <td>Имя:{{$order->name}}<br></td>
+                            <td>Email:{{$order->email}}<br></td>
+                            <td>Id:{{$order->game_id}}<br></td>
+                        </tr>
+                        <br>
+                        <br>
+                    @endforeach
+                    <form action="{{route('cart.changeEmail')}}"
+                          method="post"
+                    >
+                        {{ csrf_field() }}
+                        Почта для приема:
+                        <input type="text" name="send_email" value="{{$send_email}}">
+                        <input type="submit" value="Изменить почту">
+                    </form>
+                @endif
+            @endif
         </div>
     </div>
     <footer class="footer">

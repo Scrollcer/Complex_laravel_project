@@ -31,5 +31,3 @@ if (!(Auth::user()->is_Admin)) {
     <br>
     <input type="submit" value="Добавить категорию">
 </form>
-
-

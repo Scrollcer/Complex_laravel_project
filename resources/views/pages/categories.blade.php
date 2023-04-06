@@ -34,15 +34,6 @@ use App\Models\Games;
             </div>
         </div>
         <div class="header-container">
-            <div class="payment-container">
-                <div class="payment-basket__status">
-                    <div class="payment-basket__status__icon-block"><a class="payment-basket__status__icon-block__link"><i
-                                class="fa fa-shopping-basket"></i></a></div>
-                    <div class="payment-basket__status__basket"><span
-                            class="payment-basket__status__basket-value">0</span><span
-                            class="payment-basket__status__basket-value-descr">товаров</span></div>
-                </div>
-            </div>
             @if(Auth::check())
                 Вы вошли как {{Auth::user()->name}}. Добро пожаловать!
                 <br>
@@ -72,6 +63,20 @@ use App\Models\Games;
                                     href="{{route('categories', ['id'=>$category->id, 'name'=>$category->name])}}"
                                     class="sidebar-category__item__link">{{$category["name"]}}</a>
                             </li>
+                            @if(Auth::check())
+                                @if(Auth::user()->is_Admin)
+
+                                    <a href="{{route('category.editPage', ['id' => $category->id])}}">Редактировать</a>
+
+                                    <form action="{{route('category.delete', ['id' => $category->id])}}"
+                                          method="post">
+                                        {{ csrf_field() }}
+                                        <input type="submit" value="удалить">
+                                    </form>
+
+                                    <a href="{{route('category.addPage')}}">Добавить</a>
+                                @endif
+                            @endif
                         @endforeach
                     </ul>
                 </div>
@@ -143,6 +148,20 @@ use App\Models\Games;
                                 Купить
                             </a>
                             <br>
+                            @if(Auth::check())
+                                @if(Auth::user()->is_Admin)
+
+                                    <a href="{{route('game.editPage', ['id' => $game->id])}}">Редактировать</a>
+
+                                    <form action="{{route('game.delete', ['id' => $game->id])}}"
+                                          method="post">
+                                        {{ csrf_field() }}
+                                        <input type="submit" value="удалить">
+                                    </form>
+
+                                    <a href="{{route('game.addPage')}}">Добавить</a>
+                                @endif
+                            @endif
                             <br>
                         @endif
                     @endforeach

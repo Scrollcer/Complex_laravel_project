@@ -1,20 +1,27 @@
-# Верстка GameMagaz - макет магазина компьютерных игр.
+# Выпускной проект №3
 
-##### Установка пакетов
+##### Установка пакетов composer
+
 ```sh
-$ npm install
+$ php composer install
 ```
 
-##### Запуск Gulp - watch
+##### Запуск миграций
+
 ```sh
-$ gulp
+$ php artisan migrate
 ```
 
-##### Сборка проекта
+##### Запуск сервера (если OpenServer)
+
 ```sh
-$ gulp build
+$ php artisan run serve
 ```
 
-В проекте используется:
- - [Normalize-css](https://necolas.github.io/normalize.css/)
- - [FontAwesome.io](http://fontawesome.io/)
+##### Запуск проекта (фронт)
+
+```sh
+$ npm run dev
+```
+
+Для входа в админку установить соответсвующую галочку при регистрации пользователя и войти за него.

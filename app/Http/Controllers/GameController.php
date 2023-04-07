@@ -26,8 +26,7 @@ class GameController extends Controller
         $game->name = request()->name;
         $game->category_id = request()->category_id;
         $game->price = request()->price;
-        $path = request()->file('image')->move('assets/img/games', 'public');
-        $game->image = $path;
+        $game->image = request()->file('image')->move('assets/img/games', 'public');;
         $game->description = request()->description;
         $game->save();
         return redirect('/');
@@ -44,7 +43,7 @@ class GameController extends Controller
         $game->name = request()->name;
         $game->category_id = request()->category_id;
         $game->price = request()->price;
-        $game->image = 1234;
+        $game->image = request()->file('image')->move('assets/img/games', 'public');
         $game->description = request()->description;
         $game->save();
         return redirect('/');

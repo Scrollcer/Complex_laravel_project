@@ -26,7 +26,9 @@ class GameController extends Controller
         $game->name = request()->name;
         $game->category_id = request()->category_id;
         $game->price = request()->price;
-        $game->image = request()->file('image')->move('assets/img/games', 'public');;
+        if (request()->file('image') !== null) {
+            $game->image = request()->file('image')->move('assets/img/games', 'public');
+        }
         $game->description = request()->description;
         $game->save();
         return redirect('/');
